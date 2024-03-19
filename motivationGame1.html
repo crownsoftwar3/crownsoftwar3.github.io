@@ -1,0 +1,137 @@
+<html>
+<head> 
+<title>Sports Mtivation Game</title>
+
+<style>
+.advice
+{
+    margin-left: 500pt; font-size: 20px;
+}
+
+.instructions
+{
+    font-size: 40px;
+}
+.coins
+{  
+    float: right;
+}
+.middleContainer
+{
+    display: inline-flex;
+}
+#gauge_border
+{
+    width: 254px;
+    height: 50px;
+    line-height: 50px;
+    border: 2px;
+    /* background-color: blue; */
+    border-color: greenyellow;
+    border-style: solid;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+ }
+#gauge_filling
+{
+    position: relative;
+    width: 5px;
+    height: 50px;
+    
+    line-height: 50px;
+    background-color: greenyellow;
+    color: red;
+
+}
+.gaugeLabel
+{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+</style>
+<script>
+   let maxWidth    = 250;
+ // let gauge_filling = [0.1, 0] //
+/*
+ * level is bweteen 0-1
+ */
+function drawGauge (level) 
+{
+    let gaugeFilling= document.getElementById("gauge_filling");
+    gaugeFilling.style.width    = maxWidth * level;
+}
+function growGauge ()
+{
+    let gaugeFilling = document.getElementById("gauge_filling");
+    let currentWidth = gaugeFilling.offsetWidth;
+    let newWidth    = currentWidth + 5;
+    if (newWidth < maxWidth)
+    {
+        gaugeFilling.style.width = newWidth;
+    }
+}
+
+function keyHandler(event)
+{
+    let key = event.key;
+    if (key == "b")
+    {
+        // drawGauge(.5);
+        growGauge();
+    }
+}
+
+</script>
+
+
+
+
+</head>
+
+
+<body onload="window.addEventListener('keypress',keyHandler)">
+    
+<div class="coins">
+    <img src="coinMockupWnum.png" style="width: 50%;"/>
+
+
+</div>
+<div class="advice"> 
+You need the art of relaxed concentration.
+
+
+</div>
+<div class="middleContainer">
+     <div class="instructions">
+    Press b to fill up meditation bar.
+
+    </div>   
+    <div class="court">
+
+    </div>
+    <div class="player">
+    <img src="dunkScratchP3Transparent.png"/>
+
+    </div>
+</div>
+<div id="gauge_border">
+    <div id="gauge_filling">
+<!-- <span class="gaugeLabel">meditation level</span>  -->
+    </div>
+</div>
+<div class="instructions">
+
+</div>
+
+
+
+</body>
+
+
+
+
+</html>
