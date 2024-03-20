@@ -1,9 +1,20 @@
 <html>
 <head>
 <style>
-.advice
+#advice
 {
     margin-left: 500pt; font-size: 20px;
+    width: 50em;
+    animation: fadeIn 2s; 
+
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeOut {
+  0% { opacity: 100; }
+  100% { opacity: 0; }
 }
 
 .instructions
@@ -53,7 +64,7 @@
 </style>
 <script>
    let maxWidth    = 250;
- // let gauge_filling = [0.1, 0] //
+ 
 /*
  * level is bweteen 0-1
  */
@@ -72,40 +83,71 @@ function growGauge ()
         gaugeFilling.style.width = newWidth;
     }
 }
+let motivationAdvices = [
+    "You need the art of relaxed concentration.",
+    "By meditating it will boost your preformance.",
+    "You need the art of relaxed concentration.",
+    "To be focused take deep breaths."
+    
+];
+
+
 
 function keyHandler(event)
 {
     let key = event.key;
     if (key == "b")
-    {
+    { 
         // drawGauge(.5);
         growGauge();
     }
 }
 
+function startup ()
+{
+    window.addEventListener('keypress',keyHandler);  
+
+    let adviceDiv = document.getElementById("advice");
+    let currentAdvice = 0;
+
+    setInterval( function()
+    {
+        currentAdvice = currentAdvice + 1;
+        if (currentAdvice >= motivationAdvices.length)
+        {
+            currentAdvice = 0;
+        }
+        adviceDiv.style.animation = "";
+        adviceDiv.textContent = motivationAdvices[currentAdvice];
+        adviceDiv.style.animation = "fadeIn 2s";
+    }, 
+    5000);
+
+
+
+}
+
 </script>
-
-
 
 
 </head>
 
 
-<body onload="window.addEventListener('keypress',keyHandler)">
+<body onload="startup();">
     
 <div class="coins">
     <img src="coinMockupWnum.png" style="width: 50%;"/>
 
 
 </div>
-<div class="advice"> 
+<div id="advice"> 
 You need the art of relaxed concentration.
 
 
 </div>
 <div class="middleContainer">
      <div class="instructions">
-    Press b to fill up meditation bar.
+    Press b to breathe.
 
     </div>   
     <div class="court">
@@ -128,7 +170,6 @@ You need the art of relaxed concentration.
 
 
 </body>
-
 
 
 
