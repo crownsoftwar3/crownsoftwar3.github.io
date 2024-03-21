@@ -5,18 +5,33 @@
 {
     margin-left: 500pt; font-size: 20px;
     width: 50em;
-    animation: fadeIn 2s; 
+    animation: fadeIn 5s ease-in-out alternate infinite; 
 
 }
-@keyframes fadeIn {
+@keyframes fadeIn
+{
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-@keyframes fadeOut {
-  0% { opacity: 100; }
+@keyframes fadeOut
+{
+  10% { opacity: 100; }
   100% { opacity: 0; }
 }
-
+.paused
+{
+    -webkit-animation-play-state:paused;
+    -moz-animation-play-state:paused;
+    -o-animation-play-state:paused; 
+    animation-play-state:paused;
+}
+.running
+{
+    -webkit-animation-play-state:running;
+    -moz-animation-play-state:running;
+    -o-animation-play-state:running; 
+    animation-play-state:running;
+}
 .instructions
 {
     font-size: 40px;
@@ -86,11 +101,9 @@ function growGauge ()
 let motivationAdvices = [
     "You need the art of relaxed concentration.",
     "By meditating it will boost your preformance.",
-    "You need the art of relaxed concentration.",
     "To be focused take deep breaths."
     
 ];
-
 
 
 function keyHandler(event)
@@ -117,11 +130,9 @@ function startup ()
         {
             currentAdvice = 0;
         }
-        adviceDiv.style.animation = "";
         adviceDiv.textContent = motivationAdvices[currentAdvice];
-        adviceDiv.style.animation = "fadeIn 2s";
     }, 
-    5000);
+    10000);
 
 
 
