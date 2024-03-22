@@ -3,10 +3,14 @@
 <style>
 #advice
 {
-    margin-left: 500pt; font-size: 20px;
-    width: 50em;
+    margin: auto; 
+    font-size: 30px;
+    width: 75em;
+    border: 1px green;
     animation: fadeIn 5s ease-in-out alternate infinite; 
-
+    margin-left: 200pt;
+    margin-bottom: 35pt;;
+    flex-shrink: 1.5;
 }
 @keyframes fadeIn
 {
@@ -34,11 +38,22 @@
 }
 .instructions
 {
-    font-size: 40px;
+    font-size: 20px;
+    padding-top: 60pt;
 }
 .coins
 {  
     float: right;
+    margin-right: 4pt;
+    padding: 0px;
+    flex-grow: 3;
+}
+.flex
+{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
 }
 .middleContainer
 {
@@ -148,17 +163,14 @@ function startup ()
 
 
 <body onload="startup();">
-    
-<div class="coins">
-    <img src="coinMockupWnum.png" style="width: 50%;"/>
-
-
+ 
+<div class="flex">
+    <div id="advice"> 
+    You need the art of relaxed concentration.
+    </div>
+    <div class="coins"><img src="coinMockupWnum.png" style="width: 75%;"/></div>
 </div>
-<div id="advice"> 
-You need the art of relaxed concentration.
 
-
-</div>
 <div class="middleContainer">
      <div class="instructions">
     Press b to fill up meditation bar.
